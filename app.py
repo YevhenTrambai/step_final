@@ -5,7 +5,6 @@ app = Flask(__name__)
 VERSION = "1.0.3"
 MESSAGE = "Hello in my final project app page @YevhenT"
 
-# Main page
 @app.route('/')
 def home():
     html = """
@@ -47,12 +46,10 @@ def home():
     """
     return render_template_string(html, message=MESSAGE, version=VERSION)
 
-# Страница 1
 @app.route('/page1')
 def page1():
     return "<h1>Welcome to Page 1!</h1><p><a href='/'>Back to Home</a></p>"
 
-# Страница 2
 @app.route('/page2')
 def page2():
     return "<h1>Welcome to Page 2!</h1><p><a href='/'>Back to Home</a></p>"
