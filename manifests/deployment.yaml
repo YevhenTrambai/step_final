@@ -7,6 +7,7 @@ metadata:
     app: python-app
 spec:
   replicas: 2
+  revisionHistoryLimit: 0
   selector:
     matchLabels:
       app: python-app
@@ -17,7 +18,7 @@ spec:
     spec:
       containers:
       - name: python-app
-        image: yevhent/python-test-server:adb11fb9fc081bd1e67bbd0d4d890827a8dbe484
+        image: yevhent/python-test-server:${GITHUB_SHA}
         imagePullPolicy: Always
         ports:
         - containerPort: 5000

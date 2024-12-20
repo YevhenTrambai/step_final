@@ -2,7 +2,7 @@ from flask import Flask
 
 app = Flask(__name__)
 
-VERSION = "1.0.1"
+VERSION = "1.0.2"
 MESSAGE = "Hello in my final project app page @YevhenT"
 
 @app.route('/')
