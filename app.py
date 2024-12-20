@@ -2,8 +2,8 @@ from flask import Flask
 
 app = Flask(__name__)
 
-VERSION = "1.0.0"
-MESSAGE = "Hello from Python App!"
+VERSION = "1.0.1"
+MESSAGE = "Hello in my final project app page @YevhenT"
 
 @app.route('/')
 def hello():
