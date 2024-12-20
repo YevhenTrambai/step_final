@@ -6,6 +6,9 @@ on:
     types:
       - completed
 
+permissions:
+  contents: write
+
 jobs:
   update-k8s-manifest:
     runs-on: ubuntu-latest
