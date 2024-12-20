@@ -4,15 +4,29 @@ This repository demonstrates a complete CI/CD pipeline deploying a Python applic
 
 ## Project Structure
 
+```plaintext
 step_final/
-├── app.py                 # Python Flask application
-├── Dockerfile            # Container image definition
-├── requirements.txt      # Python dependencies
-├── EKS/                 # Terraform configuration for EKS
-└── manifests/           # Kubernetes manifests
-├── deployment.yaml
-├── service.yaml
-└── ingress.yaml
+├── app.py                     # Python Flask application
+├── Dockerfile                 # Container image definition
+├── requirements.txt           # Python dependencies
+├── EKS/                       # Terraform configuration for EKS
+│   ├── backend.tf             # S3 backend configuration
+│   ├── provider.tf            # AWS provider setup
+│   ├── variables.tf           # Variable definitions
+│   ├── terraform.tfvars       # Variable values
+│   ├── eks-cluster.tf         # EKS cluster configuration
+│   ├── eks-worker-nodes.tf    # EKS node groups
+│   ├── iam.tf                 # IAM roles and policies
+│   ├── sg.tf                  # Security groups
+│   └── ingress_controller.tf  # NGINX ingress setup
+├── manifests/                 # Kubernetes manifests
+│   ├── deployment.yaml        # Application deployment
+│   ├── service.yaml           # Service configuration
+│   └── ingress.yaml           # Ingress rules
+└── .github/workflows/         # GitHub Actions
+    ├── docker-build.yml       # Docker image build pipeline
+    └── update-manifest.yml    # Manifest update automation
+```
 
 ## Prerequisites
 
@@ -29,10 +43,12 @@ The project uses several key variables that you'll need to customize for your ow
 - Profile: `danit`
 - Student name: `yevhent`
 - Domain: `devops4.test-danit.com`
+
 In GitHub repository settings, add secrets:
 - DOCKERHUB_USERNAME
 - DOCKERHUB_TOKEN
 - GITHUB_TOKEN (for automated updates)
+
 In deployment.yaml, update the image repository:
 
     your-dockerhub-username/python-test-server:${GITHUB_SHA}
@@ -52,8 +68,11 @@ In backend.tf, update:
     region = "your-region"          # Your AWS region (e.g., eu-central-1)
     
 Important Notes:
+
 The name variable is used as a prefix for most AWS resources
+
 The profile should have appropriate AWS permissions
+
 Changing these values after deployment may require recreating some resources
 
 ## Step-by-Step Setup
@@ -108,13 +127,17 @@ The application is available at:
 https://app.YOUR_NAME.YOUR_DOMAIN
 
 ## Making Changes
-    To update the application:
-    Modify app.py
-    Commit and push changes
-    GitHub Actions will:
-    Build new image
-    Update deployment manifest
-    ArgoCD will automatically deploy the new version
+    
+To update the application:
+    
+- Modify app.py 
+- Commit and push changes
+
+GitHub Actions will:
+    
+- Build new image
+- Update deployment manifest
+- ArgoCD will automatically deploy the new version
 
 ## Cleanup
 To tear down the infrastructure:
