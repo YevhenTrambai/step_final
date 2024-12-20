@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: python-app
-        image: yevhent/python-test-server:latest
+        image: yevhent/python-test-server:${{ github.sha }}
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
