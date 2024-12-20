@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: python-app
-        image: yevhent/python-test-server:3d21f2aa86a6c4b4b9c55502ba8523f4b4b1373f
+        image: yevhent/python-test-server:ea8a653a207e43a947a7bd17c091a0244b6c4460
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
