@@ -10,8 +10,8 @@ name = "yevhent"
 #subnets_ids = ["subnet-0b27929ad2896d99f", "subnet-0c15a8c6856de7853", "subnet-01a5c422124b1c69e"]
 
 
-vpc_id      = "vpc-0b3c6a5edabcbc866"
-subnets_ids = ["subnet-09147e169de2bbedd", "subnet-014fb3015844ed798", "subnet-09e5991259d455b0f"]
+vpc_id      = "vpc-03b5ab701ad62483a"
+subnets_ids = ["subnet-07b489a2e1efe497f", "subnet-0340028001abca9af", "subnet-020c0486dd154cee3"]
 
 tags = {
   Environment = "test-yevhent"

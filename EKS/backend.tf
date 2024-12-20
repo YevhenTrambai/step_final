@@ -1,9 +1,9 @@
 terraform {
   backend "s3" {
-    bucket         = "danit-devops-tf-state"
+    bucket         = "final-project-yevhent-bucket1"
     # Example
     #key            = "eks/terraform.tfstate"
-    key            = "yevhent/terraform.tfstate"
+    key            = "terraform.tfstate"
     encrypt        = true
     # Example
     #dynamodb_table = "lock-tf-eks"

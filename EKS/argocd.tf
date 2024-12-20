@@ -26,14 +26,23 @@ resource "helm_release" "argocd" {
     value = "nginx"
   }
 
+  set {
+    name  = "server.insecure"
+    value = "true"
+  }
+
+  set {
+    name  = "server.extraArgs[0]"
+    value = "--insecure"
+  }
+
   depends_on = [
     helm_release.nginx_ingress,
     aws_eks_node_group.danit-amd
   ]
 }
 
-# Get ArgoCD admin password
-resource "kubernetes_secret" "argocd_secret" {
+data "kubernetes_secret" "argocd_secret" {
   depends_on = [helm_release.argocd]
   metadata {
     name      = "argocd-initial-admin-secret"
